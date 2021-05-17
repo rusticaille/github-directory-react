@@ -1,0 +1,17 @@
+@use 'src/styles/vars';
+
+.message {
+  width: 90%;
+  height: 3rem;
+  background-color: white;
+  margin: 1rem auto;
+  border: 1px solid vars.$color-borders;
+  border-radius: 2px;
+  line-height: 1.5rem;
+  padding-left: 1rem;
+  text-align: left;
+}
+
+.is-hidden {
+  display: none;
+}

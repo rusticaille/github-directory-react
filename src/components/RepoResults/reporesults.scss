@@ -1,0 +1,52 @@
+@use 'src/styles/vars';
+
+.results-container {
+  width: 90%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.result-card {
+  width: 200px;
+  height: 400px;
+  background-color: white;
+  margin-top: 1.5rem;
+  border: 1px solid vars.$color-borders;
+  border-radius: 2px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+
+img {
+  width: 100%; 
+  border-bottom: 1px solid rgb(228, 228, 228);
+  background-color: rgb(230, 225, 225);
+}
+
+.result-desc {
+  padding: 10px;
+  text-align: left;
+  overflow-y: hidden;
+  word-wrap: break-word;
+}
+
+h2 {
+  font-size: 1.1rem;
+  margin: 0;
+  color: black;
+}
+
+span {
+  color: vars.$color-borders;
+  font-weight: 0.75rem;
+}
+
+p {
+  margin-top: 0.75rem;
+  color: black;
+}

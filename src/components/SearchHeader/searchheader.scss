@@ -1,0 +1,25 @@
+@use 'src/styles/vars';
+
+.search-form {
+  width: 90%;
+  height: 5rem;
+  background-color: white;
+  margin: 1rem auto;
+  border: 1px solid vars.$color-borders;
+  border-radius: 2px;
+  border-bottom: 3px solid vars.$color-borders;
+  border-right: 2px solid vars.$color-borders;
+  
+}
+
+.search-input {
+  width: 96%;
+  height: 3rem;
+  border: 1px solid vars.$color-borders;
+  border-radius: 2px;
+  margin: 1rem auto;
+}
+
+.logo {
+  max-width: 150px;
+}
