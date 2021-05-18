@@ -1,14 +1,13 @@
 // == Import npm
 import React from 'react';
+import PropTypes from 'prop-types';
 
 // == Import
 import './searchheader.scss';
-import githubLogo from 'src/assets/logo-github.png';
 
 // == Composant
 const SearchHeader = ({manageOnClick, placeholder, manageInputSubmit, value, onInputChange}) => (
   <div className="search-container">
-    <img className="logo" src={githubLogo} alt='github-logo'/>
     <form 
       className='search-form'
       onSubmit={manageInputSubmit}
@@ -25,6 +24,14 @@ const SearchHeader = ({manageOnClick, placeholder, manageInputSubmit, value, onI
     </form>
   </div>
 );
+
+SearchHeader.propTypes = {
+  manageOnClick: PropTypes.func.isRequired,
+  placeholder: PropTypes.string.isRequired,
+  manageInputSubmit: PropTypes.func.isRequired,
+  value: PropTypes.string.isRequired,
+  onInputChange: PropTypes.func.isRequired,
+};
 
 // == Export
 export default SearchHeader;

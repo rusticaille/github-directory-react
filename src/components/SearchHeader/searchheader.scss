@@ -13,13 +13,10 @@
 }
 
 .search-input {
-  width: 96%;
+  width: 98%;
   height: 3rem;
   border: 1px solid vars.$color-borders;
   border-radius: 2px;
   margin: 1rem auto;
-}
-
-.logo {
-  max-width: 150px;
+  padding-left: 0.5rem;
 }

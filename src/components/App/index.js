@@ -1,13 +1,18 @@
-// == Import npm
 import React, {useState}  from 'react';
+import { Switch, Route} from 'react-router-dom';
 
 // == Import
 import './app.scss';
+import githubLogo from 'src/assets/logo-github.png';
+
 import axios from 'axios';
 
 import SearchHeader from 'src/components/SearchHeader';
 import RepoResults from 'src/components/RepoResults';
 import Message from 'src/components/Message';
+import FAQ from 'src/components/FAQ';
+import NotFound from 'src/components/NotFound';
+import Nav from 'src/components/Nav';
 
 // == Composant
 const App = () => {
@@ -15,7 +20,7 @@ const App = () => {
   const [placeholder, setPlaceholder] = useState("Rechercher");
   const[inputText, setInputText] = useState("");
   const [reposList, setList] = useState([]);
-  const[counter, setCounter] = useState("")
+  const[counter, setCounter] = useState("");
 
   const onClickHidePlaceholder = () => {
     setPlaceholder('');
@@ -23,16 +28,12 @@ const App = () => {
 
   const manageInputChange = (inputText) => {
     setInputText(inputText);
-    console.log(inputText);
   }
 
   const handleInputResult = (event) => {
     event.preventDefault()
-    console.log('submit!');
-    console.log(inputText);
     axios.get(`https://api.github.com/search/repositories?q=${inputText}`)
       .then((response) => {
-        console.log(response.data.items);
         setList(response.data.items);
         setCounter(response.data.items.length);
       })
@@ -43,19 +44,31 @@ const App = () => {
 
   return (
   <div className="app">
-    <SearchHeader
-      placeholder={placeholder}
-      manageOnClick={onClickHidePlaceholder}
-      manageInputSubmit={handleInputResult}
-      value={inputText}
-      onInputChange={manageInputChange}
-    />
-    <Message
-      counter={counter}
-    />
-    <RepoResults
-      repos={reposList}
-    />
+    <img className="logo" src={githubLogo} alt='github-logo'/>
+    <Nav/>
+    <Switch>
+      <Route exact path="/">
+        <SearchHeader
+          placeholder={placeholder}
+          manageOnClick={onClickHidePlaceholder}
+          manageInputSubmit={handleInputResult}
+          value={inputText}
+          onInputChange={manageInputChange}
+        />
+        <Message
+          counter={counter}
+        />
+        <RepoResults
+          repos={reposList}
+        />
+      </Route>
+      <Route exact path="/faq">
+        <FAQ/>
+      </Route>
+      <Route>
+        <NotFound/>
+      </Route>
+    </Switch>
   </div>
   )
 };

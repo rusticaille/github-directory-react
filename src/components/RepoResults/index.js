@@ -1,5 +1,6 @@
 // == Import npm
 import React from 'react';
+import PropTypes from 'prop-types';
 
 // == Import
 import './reporesults.scss';
@@ -27,5 +28,18 @@ const RepoResults = ({repos}) => (
   </div>
 );
 
+RepoResults.propTypes = {
+  repos: PropTypes.arrayOf(
+    PropTypes.shape({
+      id:PropTypes.number.isRequired,
+      name:PropTypes.string.isRequired,
+      full_name: PropTypes.string.isRequired,
+      description: PropTypes.string,
+      owner: PropTypes.shape({
+        html_url:PropTypes.string.isRequired,
+    }).isRequired,
+    }).isRequired,
+  ).isRequired,
+}
 // == Export
 export default RepoResults;
