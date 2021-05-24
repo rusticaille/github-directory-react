@@ -20,4 +20,5 @@ Création d'un annuaire des repos Github en utilisant React et l'API de Github.
  - Un menu qui permet d'accéder à la page "Recherche" ou "FAQ"
  - Une page 404
  - Limitation du nombre de résultats
+ - Renvoi en haut de page à chaque nouveau rendu
  - bouton pour accéder aux résultats suivants
