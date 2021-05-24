@@ -6,26 +6,36 @@ import PropTypes from 'prop-types';
 import './reporesults.scss';
 
 // == Composant
-const RepoResults = ({repos}) => (
-  <div className="results-container">
-    {repos.map((repo) => (
+const RepoResults = ({repos, handleMoreResults}) => (
+    <>
       <div 
-        key={repo.id}
-        className="result-card"
+        className="results-container"
       >
-        <img src={repo.owner.avatar_url} alt='avatar'/>
-        <div className="result-desc">
-          <a href={repo.owner.html_url}>
-            <h2>{repo.name}</h2>
-            <span>{repo.full_name}</span>
-            <p>{repo.description}</p>
-          </a>
-        </div>
+        {repos.map((repo) => (
+          <div 
+            key={repo.id}
+            className="result-card"
+          >
+            <img src={repo.owner.avatar_url} alt='avatar'/>
+            <div className="result-desc">
+              <a href={repo.owner.html_url}>
+                <h2>{repo.name}</h2>
+                <span>{repo.full_name}</span>
+                <p>{repo.description}</p>
+              </a>
+            </div>
+          </div>
+        ))
+        }
       </div>
-    ))
-    }
-    
-  </div>
+      <button 
+      type="button"
+      className="results-button"
+      onClick={handleMoreResults}
+      >
+        Plus de résultats
+      </button>
+    </>
 );
 
 RepoResults.propTypes = {
@@ -40,6 +50,7 @@ RepoResults.propTypes = {
     }).isRequired,
     }).isRequired,
   ).isRequired,
+  handleMoreResults: PropTypes.func.isRequired,
 }
 // == Export
 export default RepoResults;

@@ -21,6 +21,7 @@ const App = () => {
   const[inputText, setInputText] = useState("");
   const [reposList, setList] = useState([]);
   const[counter, setCounter] = useState("");
+  const[pageCounter, setPageCounter] = useState(1);
 
   const onClickHidePlaceholder = () => {
     setPlaceholder('');
@@ -34,8 +35,12 @@ const App = () => {
     event.preventDefault()
     axios.get(`https://api.github.com/search/repositories?q=${inputText}`)
       .then((response) => {
+      setCounter(response.data.items.length);
+      });
+    axios.get(`https://api.github.com/search/repositories?q=${inputText}&sort=stars&order=desc&page=${pageCounter}&per_page=9`)
+      .then((response) => {
         setList(response.data.items);
-        setCounter(response.data.items.length);
+        setPageCounter(pageCounter + 1);
       })
       .catch((error) => {
         console.log(error);
@@ -60,6 +65,7 @@ const App = () => {
         />
         <RepoResults
           repos={reposList}
+          handleMoreResults={handleInputResult}
         />
       </Route>
       <Route exact path="/faq">
